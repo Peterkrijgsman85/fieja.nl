@@ -410,5 +410,49 @@ Dus, wil jij jouw klanten laten stralen van top tot teen? Neem contact op en ont
   })();
 </script>
 
+
+
+  <!-- Scroll-to-top knop -->
+<button id="scrollTopBtn" title="Naar boven" style="
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--main);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 9999;
+  transition: background 0.2s, transform 0.2s;
+">↑</button>
+
+<script>
+  const scrollBtn = document.getElementById('scrollTopBtn');
+
+  // Toon knop als er meer dan 200px gescrolled is
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      scrollBtn.style.display = 'block';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
+  });
+
+  // Klik → scroll naar boven
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Hover effect
+  scrollBtn.addEventListener('mouseenter', () => scrollBtn.style.transform = 'translateY(-2px)');
+  scrollBtn.addEventListener('mouseleave', () => scrollBtn.style.transform = 'translateY(0)');
+</script>
+
+
 </body>
 </html>
