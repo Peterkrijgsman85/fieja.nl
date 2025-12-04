@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fieja B.V. – Groothandel Zoetwaren & Beenmode</title>
+
+    <style>
+        :root {
+            --main: #e00606;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+        }
+
+        header img.banner {
+            width: 100%;
+            height: 55vh;
+            object-fit: cover;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 180px;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--main);
+            font-size: 2.4rem;
+        }
+
+        h2 {
+            color: var(--main);
+            margin-top: 0;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 35px auto;
+            text-align: left;
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--main);
+        }
+
+        .contact-form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: var(--main);
+            color: #fff;
+            border: none;
+            padding: 14px 22px;
+            font-size: 1rem;
+            border-radius: 6px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        footer h3 {
+            color: var(--main);
+        }
+
+        footer .footer-box {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        footer p {
+            line-height: 1.6;
+            margin: 0 0 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img class="logo" src="logo_fieja.png" alt="Fieja logo" />
+        <img class="banner" src="header.jpg" alt="Fieja pand" />
+    </header>
+
+    <!-- INTRO -->
+    <section>
+        <h1>Welkom bij Fieja B.V.</h1>
+        <p>
+            Fieja B.V. is een groothandel gespecialiseerd in <strong>zoetwaren</strong>, 
+            <strong>partijhandel</strong> en <strong>beenmode</strong>.  
+            Wij leveren al jaren een breed assortiment aan winkeliers, wederverkopers en distributeurs.
+        </p>
+    </section>
+
+    <!-- DIENSTEN -->
+    <section>
+        <h2>Onze Specialisaties</h2>
+        <p>
+            ✔ Groothandel in zoetwaren<br>
+            ✔ Partijhandel goederen<br>
+            ✔ Beenmode, sokken & seizoenscollecties<br>
+            ✔ Scherpe prijzen en ruime voorraad<br>
+            ✔ Snelle levering vanuit ons pand in Maassluis
+        </p>
+    </section>
+
+    <!-- CONTACTFORM -->
+    <section>
+        <h2>Neem contact met ons op</h2>
+
+        <form class="contact-form" action="#" method="POST">
+            <label>Naam</label>
+            <input type="text" name="name" required>
+
+            <label>E-mailadres</label>
+            <input type="email" name="email" required>
+
+            <label>Bericht</label>
+            <textarea name="message" rows="5" required></textarea>
+
+            <button type="submit">Verzenden</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-box">
+            <div>
+                <h3>Contact</h3>
+                <p>Fieja B.V.</p>
+                <p>Hooge Zeedijk 2</p>
+                <p>3143 LT Maassluis</p>
+
+                <p>Tel. +31 (0)10 234 06 13</p>
+                <p>Fax. +31 (0)10 460 22 68</p>
+            </div>
+
+            <div>
+                <h3>Openingstijden</h3>
+                <p>Maandag 08.30 – 18.00</p>
+                <p>Dinsdag 08.30 – 18.00</p>
+                <p>Woensdag 11.00 – 18.00</p>
+                <p>Donderdag 11.00 – 18.00</p>
+                <p>Vrijdag 08.30 – 18.00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
