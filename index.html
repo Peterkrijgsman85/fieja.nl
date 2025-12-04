@@ -265,24 +265,58 @@
         <h2>Neem contact met ons op</h2>
 
         <div class="contact-form" role="form" aria-label="Contactformulier Fieja">
-          <!-- NOTE: action="#" voor demo. Vervang met server-side endpoint of mailto/3rd-party formulier -->
-          <form id="contactForm" action="#" method="POST" onsubmit="return handleSubmit(event)">
-            <label for="name">Naam</label>
-            <input id="name" name="name" type="text" required>
+  <form id="contactForm" method="POST" onsubmit="return handleSubmit(event)">
+    <label for="name">Naam</label>
+    <input id="name" name="name" type="text" required>
 
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" required>
+    <label for="email">E-mail</label>
+    <input id="email" name="email" type="email" required>
 
-            <label for="company">Bedrijf (optioneel)</label>
-            <input id="company" name="company" type="text">
+    <label for="company">Bedrijf (optioneel)</label>
+    <input id="company" name="company" type="text">
 
-            <label for="message">Bericht</label>
-            <textarea id="message" name="message" required></textarea>
+    <label for="message">Bericht</label>
+    <textarea id="message" name="message" required></textarea>
 
-            <button class="btn" type="submit">Verzenden</button>
-            <p id="formStatus" style="margin-top:10px;color:#333;display:none"></p>
-          </form>
-        </div>
+    <button class="btn" type="submit">Verzenden</button>
+    <p id="formStatus" style="margin-top:10px;color:#333;display:none"></p>
+  </form>
+</div>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    const form = e.target;
+    const formData = new FormData(form);
+
+    status.style.display = 'block';
+    status.style.color = '#333';
+    status.textContent = 'Bericht wordt verzonden...';
+
+    fetch('sendmail.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.text())
+    .then(text => {
+      status.textContent = text;
+      if (text.toLowerCase().includes('dank')) {
+        status.style.color = 'green';
+        form.reset();
+      } else {
+        status.style.color = 'red';
+      }
+    })
+    .catch(() => {
+      status.style.color = 'red';
+      status.textContent = 'Er is een fout opgetreden bij het verzenden.';
+    });
+
+    return false;
+  }
+</script>
+
       </div>
     </div>
   </section>
