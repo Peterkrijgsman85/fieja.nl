@@ -1,270 +1,151 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fieja B.V. – Groothandel Zoetwaren & Beenmode</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fieja Trade</title>
 
-    <style>
-        :root {
-            --main: #e00606;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #333;
-            scroll-behavior: smooth;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        color: #333;
+        scroll-behavior: smooth;
+    }
 
-        /* --- STICKY HEADER --- */
-.sticky-header {
-    position: relative;
-    width: 100%;
-}
+    /* --- HEADER --- */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        z-index: 9999;
+        border-bottom: 1px solid #eee;
+    }
 
-.header-inner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    header img {
+        height: 60px;
+    }
 
-/* Logo blijft netjes binnen de sticky header */
-.logo {
-    height: 55px;
-    width: auto;
-    animation: fadeIn 1s ease-out;
-}
+    nav a {
+        margin-left: 25px;
+        text-decoration: none;
+        font-size: 17px;
+        color: #444;
+        font-weight: 600;
+        transition: 0.3s ease;
+    }
 
-/* Banner */
-header img.banner {
-    width: 100%;
-    height: 70vh;
-    object-fit: cover;
-    animation: fadeIn 1.5s ease-out;
-    margin-top: 70px; /* 👉 ruimte maken voor sticky header */
-}
+    nav a:hover {
+        color: #000;
+        transform: translateY(-2px);
+    }
 
+    /* --- BANNER (HOGER GEMAAKT) --- */
+    .banner {
+        margin-top: 100px; /* ruimte voor sticky header */
+        width: 100%;
+        height: 420px; /* verhoogd */
+        background-image: url("header.jpg");
+        background-size: cover;
+        background-position: center;
+        animation: fadein 1.2s ease-in-out;
+    }
 
-        /* --- SECTIONS --- */
-        section {
-            padding: 70px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: center;
-        }
+    /* --- SECTIES --- */
+    section {
+        padding: 80px 40px;
+        animation: fadein 1.5s ease forwards;
+        opacity: 0;
+    }
 
-        h1, h2 {
-            color: var(--main);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease-out forwards;
-        }
+    section:nth-of-type(1) {
+        background: #f0f7ff;
+    }
 
-        p, .contact-form, .section-box {
-            opacity: 0;
-            animation: fadeUp 1s ease-out forwards;
-        }
+    section:nth-of-type(2) {
+        background: #fff5ef;
+    }
 
-        .delay-1 { animation-delay: .3s; }
-        .delay-2 { animation-delay: .6s; }
-        .delay-3 { animation-delay: .9s; }
+    section h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: slideUp 1.2s forwards;
+    }
 
-        /* --- SERVICE SECTIONS --- */
-        .section-box {
-            background: #fafafa;
-            padding: 25px 30px;
-            border-radius: 10px;
-            border-left: 4px solid var(--main);
-            margin-top: 35px;
-            text-align: left;
-        }
+    section p {
+        max-width: 900px;
+        line-height: 1.6;
+        font-size: 18px;
+        opacity: 0;
+        animation: slideUp 1.5s forwards;
+    }
 
-        /* --- CONTACT FORM --- */
-        .contact-form {
-            max-width: 500px;
-            margin: 35px auto;
-            background: #fafafa;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--main);
-        }
+    @keyframes fadein {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 
-        .contact-form label {
-            font-weight: bold;
-            display: block;
-            margin: 10px 0 5px;
-        }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .contact-form button {
-            background: var(--main);
-            color: #fff;
-            border: none;
-            padding: 14px 22px;
-            font-size: 1rem;
-            border-radius: 6px;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .contact-form button:hover {
-            background: #b00000;
-            transform: scale(1.05);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #111;
-            color: #fff;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-
-        footer h3 {
-            color: var(--main);
-        }
-
-        footer .footer-box {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        footer p {
-            line-height: 1.6;
-            margin: 0 0 8px;
-        }
-
-        /* --- ANIMATIONS --- */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-40px); opacity: 0; }
-            to   { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to   { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeUp {
-            from { transform: translateY(60px); opacity: 0; }
-            to   { transform: translateY(0); opacity: 1; }
-        }
-    </style>
 </head>
-
 <body>
 
-    <!-- HEADER -->
-   <header class="sticky-header">
-    <div class="header-inner">
-        <img class="logo" src="logo_fieja.png" alt="Fieja logo" />
-    </div>
-    <img class="banner" src="header.jpg" alt="Fieja pand" />
+<!-- ============================= -->
+<!--           HEADER              -->
+<!-- ============================= -->
+<header>
+    <img src="logo_fieja.png" alt="Fieja Trade" />
+
+    <nav>
+        <a href="#zoetwaren">Zoetwaren / Partijhandel</a>
+        <a href="#beenmode">Beenmode</a>
+    </nav>
 </header>
 
+<!-- ============================= -->
+<!--            BANNER             -->
+<!-- ============================= -->
+<div class="banner"></div>
 
-    <!-- INTRO -->
-    <section>
-        <h1 class="delay-1">Welkom bij Fieja B.V.</h1>
-        <p class="delay-2">
-            Fieja B.V. is een groothandel gespecialiseerd in <strong>zoetwaren</strong>, 
-            <strong>partijhandel</strong> en <strong>beenmode</strong>.  
-            Wij leveren een breed assortiment aan winkeliers, wederverkopers en distributeurs.
-        </p>
-    </section>
+<!-- ============================= -->
+<!--         SECTIE 1              -->
+<!-- ============================= -->
+<section id="zoetwaren">
+    <h2>Zoetwaren & Partijhandel</h2>
+    <p>
+        (Hier kun je later jouw tekst plaatsen. Deze sectie heeft een
+        volledig brede achtergrond en animerende content.)
+    </p>
+</section>
 
-    <!-- ZOETWAREN / PARTIJHANDEL -->
-    <section>
-        <h2 class="delay-1">Zoetwaren & Partijhandel</h2>
-        <div class="section-box delay-2">
-            <p>
-                <em>(Tijdelijke tekst — jij kunt deze later aanleveren)</em><br><br>
-                Wij leveren een groot en gevarieerd aanbod aan zoetwaren en partijgoederen. Altijd scherp 
-                geprijsd, snel leverbaar en direct vanuit ons magazijn in Maassluis.
-            </p>
-        </div>
-    </section>
-
-    <!-- BEENMODE -->
-    <section>
-        <h2 class="delay-1">Beenmode</h2>
-        <div class="section-box delay-2">
-            <p>
-                <em>(Tijdelijke tekst — jij kunt deze later aanleveren)</em><br><br>
-                Van sokken tot seizoenscollecties: onze beenmode is kwalitatief, modern en aantrekkelijk geprijsd.
-            </p>
-        </div>
-    </section>
-
-    <!-- CONTACTFORM -->
-    <section>
-        <h2 class="delay-1">Neem contact met ons op</h2>
-
-        <form class="contact-form delay-2" action="#" method="POST">
-            <label>Naam</label>
-            <input type="text" name="name" required>
-
-            <label>E-mailadres</label>
-            <input type="email" name="email" required>
-
-            <label>Bericht</label>
-            <textarea name="message" rows="5" required></textarea>
-
-            <button type="submit">Verzenden</button>
-        </form>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-box">
-            <div>
-                <h3>Contact</h3>
-                <p>Fieja B.V.</p>
-                <p>Hooge Zeedijk 2</p>
-                <p>3143 LT Maassluis</p>
-
-                <p>Tel. +31 (0)10 234 06 13</p>
-                <p>Fax. +31 (0)10 460 22 68</p>
-            </div>
-
-            <div>
-                <h3>Openingstijden</h3>
-                <p>Maandag 08.30 – 18.00</p>
-                <p>Dinsdag 08.30 – 18.00</p>
-                <p>Woensdag 11.00 – 18.00</p>
-                <p>Donderdag 11.00 – 18.00</p>
-                <p>Vrijdag 08.30 – 18.00</p>
-            </div>
-        </div>
-    </footer>
+<!-- ============================= -->
+<!--         SECTIE 2              -->
+<!-- ============================= -->
+<section id="beenmode">
+    <h2>Beenmode</h2>
+    <p>
+        (Ook deze sectie krijgt later jouw content. De styling is al klaar
+        met animaties en een eigen achtergrondkleur.)
+    </p>
+</section>
 
 </body>
 </html>
