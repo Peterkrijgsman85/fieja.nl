@@ -6,6 +6,51 @@
 <title>Fieja B.V. – Zoetwaren & Beenmode</title>
 
 <style>
+
+  /* Hamburger knop voor mobiel */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobiel menu */
+@media (max-width:720px){
+  .nav {
+    position: fixed;
+    top: var(--header-h);
+    right: -100%;
+    width: 220px;
+    height: calc(100vh - var(--header-h));
+    background: #fff;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 9998;
+  }
+  .nav.show { right: 0; }
+
+  .hamburger { display: flex; }
+
+  /* Hamburger active animation */
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+}
+
+  
   :root {
     --main: #e00606;
     --dark: #111;
@@ -205,6 +250,12 @@
         <a href="#intro" style="display:inline-block"><img class="logo" src="logo_fieja.png" alt="Fieja B.V. logo"></a>
         <!-- small tagline could go here if desired -->
       </div>
+      
+<div class="hamburger" id="hamburgerBtn" aria-label="Menu openen" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
       <nav class="nav" aria-label="Hoofdnavigatie">
         <a href="#intro">Home</a>
@@ -451,6 +502,28 @@ Dus, wil jij jouw klanten laten stralen van top tot teen? Neem contact op en ont
   // Hover effect
   scrollBtn.addEventListener('mouseenter', () => scrollBtn.style.transform = 'translateY(-2px)');
   scrollBtn.addEventListener('mouseleave', () => scrollBtn.style.transform = 'translateY(0)');
+
+
+  const hamburger = document.getElementById('hamburgerBtn');
+const nav = document.querySelector('.nav');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  nav.classList.toggle('show');
+  hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+});
+
+// Sluit menu als er op een link geklikt wordt (mobiel)
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (nav.classList.contains('show')) {
+      nav.classList.remove('show');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
 </script>
 
 
