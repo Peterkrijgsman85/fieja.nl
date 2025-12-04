@@ -18,45 +18,68 @@
             scroll-behavior: smooth;
         }
 
+        /* --- HEADER + BANNER --- */
         header {
             position: relative;
             width: 100%;
+            overflow: hidden;
         }
 
         header img.banner {
             width: 100%;
-            height: 55vh;
+            height: 70vh; /* 👉 Banner verhoogd */
             object-fit: cover;
+            animation: fadeIn 1.5s ease-out;
+            transform: scale(1.05);
         }
 
         .logo {
             position: absolute;
             top: 20px;
             left: 20px;
-            max-width: 180px;
+            width: 200px;
+            z-index: 10;
+            animation: slideDown 1s ease-out;
         }
 
+        /* --- SECTIONS --- */
         section {
-            padding: 60px 20px;
+            padding: 70px 20px;
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
         }
 
-        h1 {
+        h1, h2 {
             color: var(--main);
-            font-size: 2.4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 1s ease-out forwards;
         }
 
-        h2 {
-            color: var(--main);
-            margin-top: 0;
+        p, .contact-form, .section-box {
+            opacity: 0;
+            animation: fadeUp 1s ease-out forwards;
         }
 
+        .delay-1 { animation-delay: .3s; }
+        .delay-2 { animation-delay: .6s; }
+        .delay-3 { animation-delay: .9s; }
+
+        /* --- SERVICE SECTIONS --- */
+        .section-box {
+            background: #fafafa;
+            padding: 25px 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--main);
+            margin-top: 35px;
+            text-align: left;
+        }
+
+        /* --- CONTACT FORM --- */
         .contact-form {
             max-width: 500px;
             margin: 35px auto;
-            text-align: left;
             background: #fafafa;
             padding: 25px;
             border-radius: 8px;
@@ -87,8 +110,15 @@
             border-radius: 6px;
             margin-top: 15px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
+        .contact-form button:hover {
+            background: #b00000;
+            transform: scale(1.05);
+        }
+
+        /* --- FOOTER --- */
         footer {
             background: #111;
             color: #fff;
@@ -112,6 +142,27 @@
             line-height: 1.6;
             margin: 0 0 8px;
         }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-40px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 
@@ -125,31 +176,42 @@
 
     <!-- INTRO -->
     <section>
-        <h1>Welkom bij Fieja B.V.</h1>
-        <p>
+        <h1 class="delay-1">Welkom bij Fieja B.V.</h1>
+        <p class="delay-2">
             Fieja B.V. is een groothandel gespecialiseerd in <strong>zoetwaren</strong>, 
             <strong>partijhandel</strong> en <strong>beenmode</strong>.  
-            Wij leveren al jaren een breed assortiment aan winkeliers, wederverkopers en distributeurs.
+            Wij leveren een breed assortiment aan winkeliers, wederverkopers en distributeurs.
         </p>
     </section>
 
-    <!-- DIENSTEN -->
+    <!-- ZOETWAREN / PARTIJHANDEL -->
     <section>
-        <h2>Onze Specialisaties</h2>
-        <p>
-            ✔ Groothandel in zoetwaren<br>
-            ✔ Partijhandel goederen<br>
-            ✔ Beenmode, sokken & seizoenscollecties<br>
-            ✔ Scherpe prijzen en ruime voorraad<br>
-            ✔ Snelle levering vanuit ons pand in Maassluis
-        </p>
+        <h2 class="delay-1">Zoetwaren & Partijhandel</h2>
+        <div class="section-box delay-2">
+            <p>
+                <em>(Tijdelijke tekst — jij kunt deze later aanleveren)</em><br><br>
+                Wij leveren een groot en gevarieerd aanbod aan zoetwaren en partijgoederen. Altijd scherp 
+                geprijsd, snel leverbaar en direct vanuit ons magazijn in Maassluis.
+            </p>
+        </div>
+    </section>
+
+    <!-- BEENMODE -->
+    <section>
+        <h2 class="delay-1">Beenmode</h2>
+        <div class="section-box delay-2">
+            <p>
+                <em>(Tijdelijke tekst — jij kunt deze later aanleveren)</em><br><br>
+                Van sokken tot seizoenscollecties: onze beenmode is kwalitatief, modern en aantrekkelijk geprijsd.
+            </p>
+        </div>
     </section>
 
     <!-- CONTACTFORM -->
     <section>
-        <h2>Neem contact met ons op</h2>
+        <h2 class="delay-1">Neem contact met ons op</h2>
 
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form delay-2" action="#" method="POST">
             <label>Naam</label>
             <input type="text" name="name" required>
 
@@ -186,5 +248,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
