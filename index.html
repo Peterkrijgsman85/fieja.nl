@@ -18,29 +18,43 @@
             scroll-behavior: smooth;
         }
 
-        /* --- HEADER + BANNER --- */
-        header {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
+        /* --- STICKY HEADER --- */
+.sticky-header {
+    position: relative;
+    width: 100%;
+}
 
-        header img.banner {
-            width: 100%;
-            height: 70vh; /* 👉 Banner verhoogd */
-            object-fit: cover;
-            animation: fadeIn 1.5s ease-out;
-            transform: scale(1.05);
-        }
+.header-inner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 200px;
-            z-index: 10;
-            animation: slideDown 1s ease-out;
-        }
+/* Logo blijft netjes binnen de sticky header */
+.logo {
+    height: 55px;
+    width: auto;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Banner */
+header img.banner {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    animation: fadeIn 1.5s ease-out;
+    margin-top: 70px; /* 👉 ruimte maken voor sticky header */
+}
+
 
         /* --- SECTIONS --- */
         section {
@@ -169,10 +183,13 @@
 <body>
 
     <!-- HEADER -->
-    <header>
+   <header class="sticky-header">
+    <div class="header-inner">
         <img class="logo" src="logo_fieja.png" alt="Fieja logo" />
-        <img class="banner" src="header.jpg" alt="Fieja pand" />
-    </header>
+    </div>
+    <img class="banner" src="header.jpg" alt="Fieja pand" />
+</header>
+
 
     <!-- INTRO -->
     <section>
